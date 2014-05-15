@@ -1,0 +1,114 @@
+			<div class="row">
+                <div class="col-md-12 hero">
+                    <!-- hero -->
+                    <!-- end hero -->
+                </div>
+            </div>
+            <!-- headline -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="headline">
+                        <h2>Welcome to Specter Group
+                        </h2>
+                        <h4>A Premier Builder Service Eastern Atlantis
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <!-- ENDS headline -->
+            <!-- community list -->
+            <div class="row">
+                <div class="col-md-12 community-list section">
+                    <h2 class="heading">Communities
+                    </h2>
+                    <div class="row list">
+                        <div class="col-md-4 col-sm-4">
+                            <a href="community-eagle-vista.html" class="thumbcaption">
+                                <img src="/_catalogs/masterpage/SpecterGroup/img/communities-eagle-small.jpg" alt="Eagle Vista" />
+                                <span>Eagle Vista
+                                </span>
+                            </a>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas massa arcu, posuere eget hendrerit at, venenatis sit amet elit. Nullam tempor interdum nisi.
+                            </p>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <a href="community-spruce-meadows.html" class="thumbcaption">
+                                <img src="/_catalogs/masterpage/SpecterGroup/img/communities-spruce-small.jpg" alt="Spruce Meadows" />
+                                <span>Spruce Meadows
+                                </span>
+                            </a>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas massa arcu, posuere eget hendrerit at, venenatis sit amet elit. Nullam tempor interdum nisi.
+                            </p>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <a href="community-otay-crossings.html" class="thumbcaption">
+                                <img src="/_catalogs/masterpage/SpecterGroup/img/communities-otay-small.jpg" alt="Otay Crossings" />
+                                <span>Otay Crossings
+                                </span>
+                            </a>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas massa arcu, posuere eget hendrerit at, venenatis sit amet elit. Nullam tempor interdum nisi.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end community list -->
+            <!-- community list -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="our-homes section">
+                        <h2 class="heading">Our Homes
+                        </h2>
+                        <div class="row">
+                            <div class="col-md-8 col-sm-8">
+                                <div class="our-homes-col-wrapper">
+                                    <div class="header">
+                                        <img src="/_catalogs/masterpage/SpecterGroup/img/icon-homes-home.png" alt="" />
+                                    </div>
+                                    <div class="row homes">
+                                        <div class="col-md-4 col-sm-4">
+                                            <img src="/_catalogs/masterpage/SpecterGroup/img/homes-small-one.jpg" alt="Home" />
+                                        </div>
+                                        <div class="col-md-8 col-sm-8">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas massa arcu, posuere eget hendrerit at.
+                                            <br />
+                                            <a href="#" class="button">Learn More
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <div class="our-homes-col-wrapper">
+                                    <div class="header">
+                                        <img src="/_catalogs/masterpage/SpecterGroup/img/icon-homes-view.png" alt="" />
+                                    </div>
+                                    <div class="contentbox views cf">
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="/_catalogs/masterpage/SpecterGroup/img/icon-view-photos.png" alt="Photes" />
+                                                    <br />
+Photos                                                            </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="/_catalogs/masterpage/SpecterGroup/img/icon-view-video.png" alt="Videos" />
+                                                    <br />
+Videos                                                            </a>
+                                            </li>
+                                            <li class="full">
+                                                <a href="#">
+                                                    <img src="/_catalogs/masterpage/SpecterGroup/img/icon-view-tour.png" alt="Virtual Tours" />
+                                                    <br />
+Virtual Tours                                                            </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end community list -->
