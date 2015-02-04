@@ -1,0 +1,55 @@
+﻿
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+<title>Item Accordion</title>
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:TemplateHidden msdt:dt="string">0</mso:TemplateHidden>
+<mso:ManagedPropertyMapping msdt:dt="string">'Link':'Path','Line 1'{Line 1}:'Title','Line 2'{Line 2}:'PublishingContactNameOWSTEXT;','Line 3'{Line 3}:'CommentsOWSMTXT','PropertyImageRollup':'PropertyImageRollupOWSIMGE','Grouping':'PropertyTypeOWSCHCS'</mso:ManagedPropertyMapping>
+<mso:MasterPageDescription msdt:dt="string">jQuery UI Accordion Item Template</mso:MasterPageDescription>
+<mso:ContentTypeId msdt:dt="string">0x0101002039C03B61C64EC4A04F5361F385106603</mso:ContentTypeId>
+<mso:TargetControlType msdt:dt="string">;#SearchResults;#Content Web Parts;#</mso:TargetControlType>
+<mso:HtmlDesignAssociated msdt:dt="string">1</mso:HtmlDesignAssociated>
+<mso:HtmlDesignStatusAndPreview msdt:dt="string">https://pixelmill.sharepoint.com/sites/demo-displaytemplates/_catalogs/masterpage/demoProperties/Display Templates/demo-Item-Accordian.html, Conversion successful.</mso:HtmlDesignStatusAndPreview>
+<mso:HtmlDesignConversionSucceeded msdt:dt="string">True</mso:HtmlDesignConversionSucceeded>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+<body>
+	<!--Thanks to Elio Struyf, inspired and most code from http://www.eliostruyf.com/jquery-ui-tabbing-accordion-display-templates/-->
+	<div id="item_jQueryUI">
+		<!--#_
+		var encodedId = $htmlEncode(ctx.ClientControl.get_nextUniqueId() + "_picture3Lines_");
+		
+		var line1 = $getItemValue(ctx, "Line 1");
+		var line2 = $getItemValue(ctx, "Line 2");
+		var line3 = $getItemValue(ctx, "Line 3");
+		var grouping = $getItemValue(ctx, "Grouping");
+		var linkURL = $getItemValue(ctx, "Link");
+		
+		var propertyImage = $getItemValue(ctx, "PropertyImageRollup");
+		var propertyImageId = encodedId + "imageId";
+		var propertyImageMarkup = Srch.ContentBySearch.getPictureMarkup(propertyImage, null, null, ctx.CurrentItem, "customImg", line1, propertyImageId);
+
+		
+		var content = String.format('<div class="property-item">'
+			+ '<div class="property-itemImageContainer">'
+				+ '<a class="property-imageImageLink" href="{0}">'
+                   + '{1}'
+				+ '</a>'
+            + '</div>'
+            + '<div class="property-contentContainer">'
+				+ '<a class="property-contentLine1Link" href="{2}">'
+					+ '<h2 class="ms-accentText2 ms-noWrap">{3}</h2>'
+				+ '</a>'
+				+ '<div class="property-contentLine2 ms-noWrap">{4}</div>'
+                + '<div class="property-contentLine3">{5}</div>'
+            + '</div>'
+        + '</div>', linkURL, propertyImageMarkup, linkURL, line1, line2, line3);
+
+		// Push the content to the grouping object
+		Srch.U.getRenderTemplateCollection().accordion_push(grouping, content);
+		_#-->
+	</div>
+</body>
+</html>

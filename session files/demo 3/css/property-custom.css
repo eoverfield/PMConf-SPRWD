@@ -1,0 +1,27 @@
+﻿.property-item {
+	display: block;
+	padding: 20px;
+}
+.property-itemImageContainer {
+	float: left;
+	min-height: 150px;
+	overflow: hidden;
+	width: 150px;
+}
+.property-itemImageContainer img {
+	height: 150px;
+}
+
+.property-contentContainer {
+	margin-left: 170px;
+	min-height: 180px;
+}
+
+.property-contentLine3 {
+	font-size: 16px;
+	text-align: left;
+	line-height: 1.2em;
+	max-height: 4.8em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

@@ -1,0 +1,147 @@
+﻿<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"> 
+<head>
+<title>MixItUp</title>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:TemplateHidden msdt:dt="string">0</mso:TemplateHidden>
+<mso:ManagedPropertyMapping msdt:dt="string">'Link URL'{Link URL}:'Path','Line 1'{Line 1}:'Title','Line 2'{Line 2}:'PublishingContactNameOWSTEXT;Description;','Line 3'{Line 3}:'','ContentTypeId','PropertyTypeCheck'{Property Type}:'PropertyTypeOWSCHCS','PropertyImageRollup'{Image Rollup}:'PropertyImageRollupOWSIMGE'</mso:ManagedPropertyMapping>
+<mso:MasterPageDescription msdt:dt="string">This is the Mix It Up Item Display Template that will show results using the Mix It Up jQuery Library</mso:MasterPageDescription>
+<mso:ContentTypeId msdt:dt="string">0x0101002039C03B61C64EC4A04F5361F385106603</mso:ContentTypeId
+><mso:TargetControlType msdt:dt="string">;#SearchResults;#Content Web Parts;#</mso:TargetControlType>
+<mso:HtmlDesignAssociated msdt:dt="string">1</mso:HtmlDesignAssociated>
+<mso:HtmlDesignConversionSucceeded msdt:dt="string">True</mso:HtmlDesignConversionSucceeded>
+<mso:HtmlDesignStatusAndPreview msdt:dt="string">https://pixelmill.sharepoint.com/sites/demo-displaytemplates/_catalogs/masterpage/demoProperties/Display Templates/demo-Item_MixItUp.html, Conversion successful.</mso:HtmlDesignStatusAndPreview>
+<mso:CrawlerXSLFile msdt:dt="string"></mso:CrawlerXSLFile>
+<mso:HtmlDesignPreviewUrl msdt:dt="string"></mso:HtmlDesignPreviewUrl>
+</mso:CustomDocumentProperties></xml><![endif]-->
+</head>
+
+<body>
+	<!--
+	PublishingContactNameOWSTEXT, PublishingContactNameCustom
+	CommentsOWSMTXT
+	-->
+    <!--
+            Warning: Do not try to add HTML to this section. Only the contents of the first <div>
+            inside the <body> tag will be used while executing Display Template code. Any HTML that
+            you add to this section will NOT become part of your Display Template.
+    -->
+    <script>
+        $includeLanguageScript(this.url, "~sitecollection/_catalogs/masterpage/Display Templates/Language Files/{Locale}/CustomStrings.js");
+    </script>
+
+    <!--
+        Use the div below to author your Display Template. Here are some things to keep in mind:
+        * Surround any JavaScript logic as shown below using a "pound underscore" (#_ ... _#) token
+        inside a comment.
+
+        * Use the values assigned to your variables using an "underscore pound equals"
+        (_#= ... =#_) token.
+    -->
+
+    <div id="Item_mixItUp">
+
+<!--#_
+
+var encodedId = $htmlEncode(ctx.ClientControl.get_nextUniqueId() + "_picture3Lines_");
+
+var linkURL = $getItemValue(ctx, "Link URL");
+//linkURL.overrideValueRenderer($urlHtmlEncodeValueObject);
+
+var line1 = $getItemValue(ctx, "Line 1");
+var line2 = $getItemValue(ctx, "Line 2");
+var line3 = $getItemValue(ctx, "Line 3");
+
+line1.overrideValueRenderer($contentLineText); //override the value in line1 with $contentLineText function which will truncate text to 90 characters
+line2.overrideValueRenderer($contentLineText);
+line3.overrideValueRenderer($contentLineText);
+
+//Property Image Site Column
+var propertyImageFull = $getItemValue(ctx, "PropertyImageRollupOWSIMGE"); //only here to show we can grab by Managed Property name as well
+var propertyImage = $getItemValue(ctx, "PropertyImageRollup");
+var propertyImageId = encodedId + "imageId";
+var propertyImageMarkup = Srch.ContentBySearch.getPictureMarkup(propertyImage, null, null, ctx.CurrentItem, "customImg", line1, propertyImageId);
+
+
+//Property Type Site Column
+//var propertyType = $getItemValue(ctx, "PropertyTypeOWSCHCS"); //could get with managed property name
+var propertyType = $getItemValue(ctx, "PropertyTypeCheck");
+
+//set up ids for containers
+var containerId = encodedId + "container";
+var imageContainerId = encodedId + "imageContainer";
+var imageLinkId = encodedId + "imageLink";
+var dataContainerId = encodedId + "dataContainer";
+var line1LinkId = encodedId + "line1Link";
+var line1Id = encodedId + "line1";
+var line2Id = encodedId + "line2";
+var line3Id = encodedId + "line3";
+
+var dataDisplayTemplateTitle = "MixItUp";
+
+//console log context item, property image and property type managed properties for debugging purposes
+/*
+console.log(ctx.CurrentItem);
+console.log('image');
+console.log(propertyImageFull);
+console.log(propertyImage);
+console.log(propertyImageMarkup);
+console.log('type');
+console.log(propertyType);
+*/
+ _#-->
+
+	<div class="mix _#= propertyType =#_"> 
+        <div class="mix-item" id="_#= containerId =#_" data-displaytemplate="_#= $htmlEncode(dataDisplayTemplateTitle) =#_">
+        
+        
+            <div class="mix-itemImageContainer" id="_#= imageContainerId =#_">
+<!--#_
+if(!linkURL.isEmpty)
+{
+_#-->
+
+                <a class="mix-imageImageLink" href="_#= linkURL =#_" title="_#= $htmlEncode(line1.defaultValueRenderer(line1)) =#_" id="_#= imageLinkId =#_">
+<!--#_
+}
+_#-->
+                    _#= propertyImageMarkup =#_
+<!--#_
+if(!linkURL.isEmpty)
+{
+_#-->
+                </a>
+<!--#_
+}
+_#-->
+				<div class="mix-contentPropertyType"> _#= propertyType =#_</div>
+            </div>
+            <div class="mix-contentContainer" id="_#= dataContainerId =#_">
+				<a class="mix-contentLine1Link" href="_#= linkURL =#_" title="_#= $htmlEncode(line1.defaultValueRenderer(line1)) =#_" id="_#= line1LinkId =#_">
+					<h2 class="ms-accentText2 ms-noWrap" id="_#= line1Id =#_"> _#= line1 =#_</h2>
+				</a>
+
+
+
+<!--#_
+if(!line2.isEmpty)
+{
+_#-->
+                <div class="mix-contentLine2 ms-noWrap" title="_#= $htmlEncode(line2.defaultValueRenderer(line2)) =#_" id="_#= line2Id =#_" > _#= line2 =#_</div>
+<!--#_
+}
+if(!line3.isEmpty)
+{
+_#-->
+                <div class="mix-contentLine3" id="_#= line3Id =#_" title="_#= $htmlEncode(line3.defaultValueRenderer(line3)) =#_">_#= line3 =#_</div>
+<!--#_
+}
+_#-->
+            </div>
+        </div>
+	</div>
+    </div>
+</body>
+</html>
+

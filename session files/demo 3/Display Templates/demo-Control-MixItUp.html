@@ -1,0 +1,117 @@
+﻿<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"> 
+<head>
+<title>MixItUp</title>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:TemplateHidden msdt:dt="string">0</mso:TemplateHidden>
+<mso:MasterPageDescription msdt:dt="string">This is the Mix It Up Control Display Template that will show results using the Mix It Up jQuery Library</mso:MasterPageDescription>
+<mso:ContentTypeId msdt:dt="string">0x0101002039C03B61C64EC4A04F5361F385106601</mso:ContentTypeId>
+<mso:TargetControlType msdt:dt="string">;#SearchResults;#Content Web Parts;#</mso:TargetControlType>
+<mso:HtmlDesignAssociated msdt:dt="string">1</mso:HtmlDesignAssociated>
+<mso:HtmlDesignConversionSucceeded msdt:dt="string">True</mso:HtmlDesignConversionSucceeded>
+<mso:HtmlDesignStatusAndPreview msdt:dt="string">https://pixelmill.sharepoint.com/sites/demo-displaytemplates/_catalogs/masterpage/demoProperties/Display Templates/demo-Control-MixItUp.html, Conversion successful.</mso:HtmlDesignStatusAndPreview>
+<mso:CrawlerXSLFile msdt:dt="string"></mso:CrawlerXSLFile>
+<mso:HtmlDesignPreviewUrl msdt:dt="string"></mso:HtmlDesignPreviewUrl>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body>
+
+    <!--
+            Warning: Do not try to add HTML to this section. Only the contents of the first <div>
+            inside the <body> tag will be used while executing Display Template code. Any HTML that
+            you add to this section will NOT become part of your Display Template.
+    -->
+    <script>
+        $includeLanguageScript(this.url, "~sitecollection/_catalogs/masterpage/Display Templates/Language Files/{Locale}/CustomStrings.js");
+		$includeScript(this.url, "~sitecollection/_catalogs/masterpage/demoProperties/js/jquery.min.js");
+		$includeCSS(this.url, "~sitecollection/_catalogs/masterpage/demoProperties/css/mixItUp-custom.css");
+    </script>
+
+    <!--
+        Use the div below to author your Display Template. Here are some things to keep in mind:
+        * Surround any JavaScript logic as shown below using a "pound underscore" (#_ ... _#) token
+        inside a comment.
+
+        * Use the values assigned to your variables using an "underscore pound equals"
+        (_#= ... =#_) token.
+    -->
+
+    <div id="Control_mixItUp">
+
+<!--#_ 
+if (!$isNull(ctx.ClientControl) &&
+    !$isNull(ctx.ClientControl.shouldRenderControl) &&
+    !ctx.ClientControl.shouldRenderControl())
+{
+    return "";
+}
+ctx.ListDataJSONGroupsKey = "ResultTables";
+var $noResults = Srch.ContentBySearch.getControlTemplateEncodedNoResultsMessage(ctx.ClientControl);
+
+var noResultsClassName = "ms-srch-result-noResults";
+
+var ListRenderRenderWrapper = function(itemRenderResult, inCtx, tpl)
+{
+    var iStr = [];
+    iStr.push(itemRenderResult);
+    return iStr.join('');
+}
+ctx['ItemRenderWrapper'] = ListRenderRenderWrapper;
+
+var siteURL = SP.PageContextInfo.get_siteAbsoluteUrl();
+var encodedId = $htmlEncode(ctx.ClientControl.get_nextUniqueId() + "_mixIUp_");
+var controlsId = encodedId + "Controls";
+var itemsId = encodedId + "Id";
+	
+AddPostRenderCallback(ctx, function () {
+	$.getScript(siteURL + "/_catalogs/masterpage/demoProperties/js/jquery.mixitup.min.js", function(){
+	
+		var controls = jQuery('#'+controlsId);
+		var items = jQuery('#'+itemsId);
+		var cats = {};
+		
+		//get all categories / property types
+		items.find('.mix').each(function() {
+			var _this = jQuery(this);
+			var _class = _this.attr('class').replace('mix', '').trim();
+			cats[_class] = "1";
+		});
+		
+		//now set up filters
+		var div = jQuery('<div class="group"></div>');
+		div.append('<label>Filter:</label>');
+		div.append('<span class="btn filter active" data-filter="all">All</span>');
+
+		for(var cat in cats)
+		{
+			div.append('<span class="btn filter" data-filter=".' + cat + '">' + cat + '</span>');
+		}
+		div.append('<span class="btn filter" data-filter="none">None</span>');
+		controls.append(div);
+				
+		jQuery('#'+itemsId).mixItUp();
+	});
+});
+
+_#-->
+	<div id="_#= controlsId =#_" class="control-bar"></div>
+	
+	<div id="_#= itemsId =#_" class="mixItUpItems">	
+		_#= ctx.RenderGroups(ctx) =#_
+		<div class="mix-items-clear"></div>
+	</div>
+<!--#_
+if (ctx.ClientControl.get_shouldShowNoResultMessage())
+{
+_#-->
+        <div class="_#= noResultsClassName =#_">_#= $noResults =#_</div>
+<!--#_
+}
+_#-->
+
+    </div>
+</body>
+</html>

@@ -1,11 +1,52 @@
-Office 365 demo
-https://sprwd-public.sharepoint.com/
+Create a custom content type for library of images to allow for sorting as well
+	Pages content type along with specific page layout. Use rollup image, need additional site column, property type
+	Create control and item template for CSWP of above list to use mix it up jQuery library
+	
+	Mix it up image library
+	https://mixitup.kunkalabs.com/learn/tutorial/get-started/
+	
 
+Get search results to work for general content (search for property. Make sure that our results appear)
+	make sure custom content types are shown to link to custom hover panel display template.
+		Then link to hover panel display template in item display template
+	update refinement panel to custom control template to auto collapse
+	
+	
+	
+Demo 1 - Finding display Templates
+	Open SPD and find Display Template folder and show sub folders along with html and js files.
+	Also show in browser along with Content types, properties and how to disassociate
+	Review .html and .js files. 
 
-demo 1: sjeccd.edu
-demo 2: mobile first (local)
-demo 3: collapsing nav (sprwd-public.sharepoint.com)
-demo 4: mobile first (local)
-demo 5: (sprwd-public.sharepoint.com)
+	
+Demo 2 - Create a custom Display Template
+	Create a custom control template, update title and show how js files are managed for us.
+	Use custom content search so after publishing, we can show custom control template.
+	Will create new control template for demo image library
+	
+	Two custom managed properties we will reference are:
+		PropertyImageRollupOWSIMGE, PropertyTypeOWSCHCS
+		
+Demo 3 - Custom control and item template
+	Css and js already added to site
+	Modify aspects of control and item templates to make magical image layout based on MixItUp
+		https://mixitup.kunkalabs.com/
+	Will show custom managed properties in item template
+	Post render in control template
+	
+Demo 4 - Search Results, hover panel and refinement panel 
+	Show search results page
+		Show panel chain from item template to hover panel
+	Update item template to include another managed property field (add new retrieved field)
+	Update result type to link to new item display template
+	Update item template to link to new render body
+	Add new panel item template and link to this based on our result type
+	Change refinement panel to auto collapse all fields.
 
-https://github.com/eoverfield/PMConf-SPRWD/tree/ESPC14
+Demo 5 - Debugging Display Templates
+	Go back to CSWP demo and open up item or control template
+	Add console.log statements such as console.log(ctx.CurrentItem); in item display template
+	Set breakpoints in IE
+	Bind to Visual Studio by adding "debugger" in item display template in IE.
+		Must also disable debugging within IE->Tools->Advanced (uncheck)
+	

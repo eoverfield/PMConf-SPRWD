@@ -1,0 +1,131 @@
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"> 
+<head>
+<title>Demo Property Hover Panel</title>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:TemplateHidden msdt:dt="string">0</mso:TemplateHidden>
+<mso:MasterPageDescription msdt:dt="string">Displays the default hover panel template.</mso:MasterPageDescription>
+<mso:ContentTypeId msdt:dt="string">0x0101002039C03B61C64EC4A04F5361F385106603</mso:ContentTypeId>
+<mso:TargetControlType msdt:dt="string">;#SearchHoverPanel;#</mso:TargetControlType>
+<mso:HtmlDesignAssociated msdt:dt="string">1</mso:HtmlDesignAssociated>
+<mso:ManagedPropertyMapping msdt:dt="string">&#39;Title&#39;:&#39;Title&#39;,&#39;Path&#39;:&#39;Path&#39;,&#39;Description&#39;:&#39;Description&#39;,&#39;EditorOWSUSER&#39;:&#39;EditorOWSUSER&#39;,&#39;LastModifiedTime&#39;:&#39;LastModifiedTime&#39;,&#39;CollapsingStatus&#39;:&#39;CollapsingStatus&#39;,&#39;DocId&#39;:&#39;DocId&#39;,&#39;HitHighlightedSummary&#39;:&#39;HitHighlightedSummary&#39;,&#39;HitHighlightedProperties&#39;:&#39;HitHighlightedProperties&#39;,&#39;FileExtension&#39;:&#39;FileExtension&#39;,&#39;ViewsLifeTime&#39;:&#39;ViewsLifeTime&#39;,&#39;ParentLink&#39;:&#39;ParentLink&#39;,&#39;FileType&#39;:&#39;FileType&#39;,&#39;IsContainer&#39;:&#39;IsContainer&#39;,&#39;SecondaryFileExtension&#39;:&#39;SecondaryFileExtension&#39;,&#39;DisplayAuthor&#39;:&#39;DisplayAuthor&#39;,'PropertyImageRollup':'PropertyImageRollupOWSIMGE'</mso:ManagedPropertyMapping>
+<mso:HtmlDesignConversionSucceeded msdt:dt="string">True</mso:HtmlDesignConversionSucceeded>
+<mso:HtmlDesignStatusAndPreview msdt:dt="string">http://sp2013demo/sites/demo-displaytemplates/_catalogs/masterpage/demoProperties/Display Templates/demo-result-Item_Property_HoverPanel.html, Conversion successful.</mso:HtmlDesignStatusAndPreview>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+<body>
+    <div id="Item_Default_HoverPanel">
+<!--#_
+		/* provide functionality from CBS js
+		http://sp2013demo/sites/demo-displaytemplates/_layouts/15/Search.cbs.debug.js
+		*/
+		var Pxlml = {}; Pxlml.ContentBySearch = {};
+		Pxlml.ContentBySearch.getPictureMarkup = function Srch_ContentBySearch$getPictureMarkup(imageInfo, width, height, itemData, imageClassName, altTextInfo, elementId) {
+		    if (!Srch.U.n(imageInfo) && !imageInfo.isEmpty) {
+		        var $v_0 = Srch.U.getImageSourceWithRendition(imageInfo, width, height);
+		        var $v_1 = String.format('onerror="this.parentNode.innerHTML=Pxlml.ContentBySearch.getNoPictureMarkup({0});" ', height);
+		        var $v_2 = !Srch.U.n(width) && !isNaN(width);
+		        var $v_3 = !Srch.U.n(height) && !isNaN(height);
+		        var $v_4 = $v_2 && $v_3 && width === height;
+		        if ($v_4) {
+		            $v_1 += String.format('onload="Pxlml.ContentBySearch.resizeImageToSquareLength(this, {0});"', width);
+		        }
+		        var $v_5 = (Srch.U.e(elementId)) ? '' : String.format('id="{0}"', SP.Utilities.HttpUtility.htmlEncode(elementId));
+		        return String.format('<img src="{0}" class="{1}" alt="{2}" {3} {4} />', $v_0, SP.Utilities.HttpUtility.htmlEncode(imageClassName), altTextInfo.toString(), $v_5, $v_1);
+		    }
+		    else {
+		        return Pxlml.ContentBySearch.getNoPictureMarkup(height);
+		    }
+		}
+		Pxlml.ContentBySearch.getNoPictureMarkup = function Srch_ContentBySearch$getNoPictureMarkup(height) {
+		    var $v_0 = String.format('<span class="cbs-noImageContainer-ContentWrapper{0}"><span class="cbs-noImageContainer-Content{0}">{1}</span></span>', (height > 100) ? 'Large' : 'Small', SP.Utilities.HttpUtility.htmlEncode(Srch.U.loadResource('item_Content_GenericNoImageSymbol')));
+		    return String.format('<span class="cbs-noImageContainer ms-fillBoxFull" title="{0}">{1}<span class="ms-tableRow">{2}{3}{2}</span>{4}</span>', SP.Utilities.HttpUtility.htmlEncode(Srch.U.loadResource('item_NoImageMessage')), String.format('<span class="cbs-noImageContainer-Row{0}">&nbsp;</span>', ''), '<span class="cbs-noImageContainer-Cell"></span>', $v_0, String.format('<span class="cbs-noImageContainer-Row{0}">&nbsp;</span>', (height <= 100) ? '' : 'Large'));
+		}
+		Pxlml.ContentBySearch.resizeImageToSquareLength = function Srch_ContentBySearch$resizeImageToSquareLength(imgElement, squareLength) {
+		    if (Srch.U.n(squareLength) || (isNaN(squareLength)) || Srch.U.n(imgElement) || imgElement.tagName !== 'IMG' || imgElement.style.visibility === 'hidden') {
+		        return;
+		    }
+		    var $v_0 = (Srch.U.n(imgElement.naturalWidth)) ? imgElement.clientWidth : imgElement.naturalWidth;
+		    var $v_1 = (Srch.U.n(imgElement.naturalHeight)) ? imgElement.clientHeight : imgElement.naturalHeight;
+		    if (isNaN($v_0) || isNaN($v_1)) {
+		        return;
+		    }
+		    if ($v_0 < $v_1) {
+		        imgElement.width = squareLength;
+		        Pxlml.ContentBySearch.$8(imgElement, $v_1, $v_0, squareLength, false);
+		    }
+		    else if ($v_0 > $v_1) {
+		        imgElement.height = squareLength;
+		        Pxlml.ContentBySearch.$8(imgElement, $v_0, $v_1, squareLength, true);
+		    }
+		    else {
+		        imgElement.width = squareLength;
+		    }
+		}
+		Pxlml.ContentBySearch.$8 = function Srch_ContentBySearch$$8($p0, $p1, $p2, $p3, $p4) {
+		    if ($p2 !== $p3) {
+		        var $v_0 = 1 * $p3 / $p2;
+		        var $v_1 = Math.round(($v_0 * $p1 - $p3) / 2);
+		        var $v_2 = $v_1 + 'px';
+		        if ($p4) {
+		            var $v_3 = !Srch.U.n(document.body.parentNode) && document.body.parentNode.dir === 'rtl';
+		            if ($v_3) {
+		                $p0.style.left = $v_2;
+		            }
+		            else {
+		                $p0.style.right = $v_2;
+		            }
+		        }
+		        else {
+		            $p0.style.bottom = $v_2;
+		        }
+		        Sys.UI.DomElement.addCssClass($p0, 'ms-positionRelative');
+		    }
+		}
+		//end grabbing image rendering functions
+		
+		
+		
+        var i = 0;
+        var id = ctx.CurrentItem.csr_id;
+        ctx.CurrentItem.csr_ShowViewLibrary = !Srch.U.isWebPage(ctx.CurrentItem.FileExtension);
+        if(ctx.CurrentItem.IsContainer)
+        {
+            ctx.CurrentItem.csr_FileType = Srch.Res.ct_Folder
+        }
+
+		//get our property image
+		var encodedId = $htmlEncode(ctx.ClientControl.get_nextUniqueId() + "_propertyHoverPanel_");
+		var title = $getItemValue(ctx, "Title");
+		
+		var propertyImage = $getItemValue(ctx, "PropertyImageRollup");
+		var propertyImageId = encodedId + "imageId";
+		var propertyImageMarkup = Pxlml.ContentBySearch.getPictureMarkup(propertyImage, null, null, ctx.CurrentItem, "customImg", title, propertyImageId);
+
+
+        ctx.currentItem_ShowChangedBySnippet = true;
+
+_#-->
+        <div class="ms-srch-hover-innerContainer ms-srch-hover-standardSize" id="_#= $htmlEncode(id + HP.ids.inner) =#_">
+            <div class="ms-srch-hover-arrowBorder" id="_#= $htmlEncode(id + HP.ids.arrowBorder) =#_"></div>
+            <div class="ms-srch-hover-arrow" id="_#= $htmlEncode(id + HP.ids.arrow) =#_"></div>
+            <div class="ms-srch-hover-content" id="_#= $htmlEncode(id + HP.ids.content) =#_" data-displaytemplate="DefaultHoverPanel">
+                <div id="_#= $htmlEncode(id + HP.ids.header) =#_" class="ms-srch-hover-header">
+                    _#= ctx.RenderHeader(ctx) =#_
+                </div>
+                <div id="_#= $htmlEncode(id + HP.ids.body) =#_" class="ms-srch-hover-body">
+                    <!-- ctx.RenderBody(ctx) -->
+                    <div style="display: block; overflow: hidden;">
+	                    _#= propertyImageMarkup =#_
+                    </div>
+                </div>			
+                <div id="_#= $htmlEncode(id + HP.ids.actions) =#_" class="ms-srch-hover-actions">
+                    _#= ctx.RenderFooter(ctx) =#_
+                </div>
+            </div> 
+        </div>
+    </div>
+</body>
+</html>

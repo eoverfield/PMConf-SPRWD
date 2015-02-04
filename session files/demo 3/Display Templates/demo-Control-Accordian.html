@@ -1,0 +1,91 @@
+﻿<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+<title>Control Accordion</title>
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:TemplateHidden msdt:dt="string">0</mso:TemplateHidden>
+<mso:MasterPageDescription msdt:dt="string">jQuery UI Accordion Control Template</mso:MasterPageDescription>
+<mso:ContentTypeId msdt:dt="string">0x0101002039C03B61C64EC4A04F5361F385106601</mso:ContentTypeId>
+<mso:TargetControlType msdt:dt="string">;#SearchResults;#Content Web Parts;#</mso:TargetControlType>
+<mso:HtmlDesignAssociated msdt:dt="string">1</mso:HtmlDesignAssociated>
+<mso:HtmlDesignStatusAndPreview msdt:dt="string">https://pixelmill.sharepoint.com/sites/demo-displaytemplates/_catalogs/masterpage/demoProperties/Display Templates/demo-Control-Accordian.html, Conversion successful.</mso:HtmlDesignStatusAndPreview>
+
+<mso:HtmlDesignConversionSucceeded msdt:dt="string">True</mso:HtmlDesignConversionSucceeded>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+<body>
+	<!--Thanks to Elio Struyf, inspired and most code from http://www.eliostruyf.com/jquery-ui-tabbing-accordion-display-templates/-->
+	<script>
+		RegisterSod('jquery-1.10.2.js', 'https://code.jquery.com/jquery-1.10.2.min.js');
+		RegisterSod('jquery-ui.min.js', 'https://code.jquery.com/ui/1.11.2/jquery-ui.min.js');
+		RegisterSodDep('jquery-ui.min.js', 'jquery-1.10.2.js');
+		
+		$includeCSS(this.url, 'https://code.jquery.com/ui/1.11.2/themes/Smoothness/jquery-ui.css');
+		$includeCSS(this.url, "~sitecollection/_catalogs/masterpage/demoProperties/css/property-custom.css");
+
+
+		Type.registerNamespace('search.Accordion');
+
+		search.Accordion = function() {
+			var currentCtx;
+			return {
+				init: function (currentContext, encodedId) {
+					currentCtx = currentContext;
+					// Creating a new grouping object
+					currentCtx.Grouping = {};
+
+					// Add an on post render callback, this will be excuted when all the results are rendered
+					AddPostRenderCallback(currentContext, function() {
+						var groupElm = document.getElementById(encodedId);
+						search.Accordion.show(groupElm);
+					});
+				},
+
+				push: function (grouping, content) {
+					// Add the markup to the grouping array
+					if (typeof currentCtx.Grouping[grouping] !== "undefined") {
+						currentCtx.Grouping[grouping] += content;
+					} else {
+						currentCtx.Grouping[grouping] = content;
+					}
+				},
+				show: function (groupElm) {
+					EnsureScriptFunc('jquery-ui.min.js', null, function () {
+						var groups = currentCtx.Grouping;
+						var elm = $(groupElm);
+						// Add the content to the page
+						for (var key in groups) {
+							elm.append(String.format('<h3>{0}</h3><div>{1}</div>', key, groups[key]));
+						}
+						// Start tabbing
+						elm.accordion();
+					});
+				}
+			}
+		}();
+		
+		Srch.U.registerRenderTemplateByName("accordion_init", search.Accordion.init);
+		Srch.U.registerRenderTemplateByName("accordion_push", search.Accordion.push);
+	</script>
+
+	<div id="Control_jQueryUI">
+		<!--#_
+		var encodedId = $htmlEncode(ctx.ClientControl.get_nextUniqueId() + "_Grouping");
+		// Grouping init
+		Srch.U.getRenderTemplateCollection().accordion_init(ctx, encodedId);
+		if (!$isNull(ctx.ClientControl) &&
+		!$isNull(ctx.ClientControl.shouldRenderControl) &&
+		!ctx.ClientControl.shouldRenderControl())
+		{
+		return "";
+		}
+		ctx.ListDataJSONGroupsKey = "ResultTables";
+		_#-->
+		
+		<div id="_#= encodedId =#_">
+			_#= ctx.RenderGroups(ctx) =#_
+		</div>
+	</div>
+</body>
+</html>
